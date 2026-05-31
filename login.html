@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body class="login-page">
+
+    <!-- OVERLAY -->
+    <div class="overlay"></div>
+
+
+    <!-- LOGIN BOX -->
+    <div class="login-box">
+
+        <form onsubmit="loginAdmin(event)">
+
+            <!-- USERNAME -->
+            <div class="input-box">
+
+                <i class="fa-solid fa-user"></i>
+
+                <input type="text"
+                       id="username"
+                       placeholder="Username"
+                       required>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+            <div class="input-box">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input type="password"
+                       id="password"
+                       placeholder="Password"
+                       required>
+
+            </div>
+
+
+            <!-- ERROR MESSAGE -->
+            <p id="error-message"></p>
+
+
+            <!-- BUTTON -->
+            <button type="submit">
+                LOGIN
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <script>
+
+        function loginAdmin(event){
+
+            event.preventDefault();
+
+            let username =
+            document.getElementById("username");
+
+            let password =
+            document.getElementById("password");
+
+            let errorMessage =
+            document.getElementById("error-message");
+
+
+            // LOGIN DETAILS
+            // MULTIPLE USERS
+let users = [
+
+    {
+        username: "admin",
+        password: "1234"
+    },
+
+    {
+        username: "thomas",
+        password: "iot2026"
+    },
+
+    {
+        username: "james",
+        password: "land001"
+    },
+
+    {
+        username: "kelvin",
+        password: "gps002"
+    },
+
+    {
+        username: "daniel",
+        password: "gsm003"
+    },
+
+    {
+        username: "brayan",
+        password: "iot004"
+    },
+
+    {
+        username: "erick",
+        password: "smart005"
+    },
+
+    {
+        username: "michael",
+        password: "admin006"
+    },
+
+    {
+        username: "victor",
+        password: "detect007"
+    }
+
+];
+
+
+// CHECK USER
+let validUser = users.find(function(user){
+
+    return user.username === username.value
+           &&
+           user.password === password.value;
+
+});
+
+
+// IF LOGIN IS CORRECT
+if(validUser){
+
+    localStorage.setItem(
+        "loggedIn",
+        "true"
+    );
+
+    username.value = "";
+    password.value = "";
+
+    errorMessage.innerHTML = "";
+
+    window.location.href =
+    "index.html";
+}
+
+
+// IF LOGIN IS WRONG
+else{
+
+    errorMessage.innerHTML =
+    "Unknown username or password";
+}
+            
+}
+    </script>
+
+</body>
+</html>

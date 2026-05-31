@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Smart IoT Land Encroachment Detection
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="dashboard-page">
+
+    <!-- NAVIGATION -->
+    <header>
+
+        <p id="welcome-user"></p>
+    <div class="menu-toggle">
+            ☰
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li><a href="#">HOME</a></li>
+
+                <li><a href="#">ALERT</a></li>
+
+                <li><a href="#">HISTORY</a></li>
+
+                <li><a href="#">REPORT</a></li>
+
+            </ul>
+
+        </nav>
+
+
+        <!-- LOGOUT BUTTON -->
+        <button class="logout-btn"
+                onclick="logout()">
+
+            Log out
+
+        </button>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+
+            <h1>
+                Smart IoT Land <br><span>Encroachment Detection</span><br> System
+            </h1>
+
+            <p>
+                Real-time monitoring and protection
+                of land boundaries using GPS sensors,
+                GSM modules and IoT technology.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <script>
+
+      const menuToggle =
+document.querySelector(".menu-toggle");
+
+const nav =
+document.querySelector("nav");
+
+menuToggle.addEventListener("click", () => {
+
+    nav.classList.toggle("active");
+
+    if(nav.classList.contains("active")){
+
+        menuToggle.innerHTML = "✕";
+
+    }else{
+
+        menuToggle.innerHTML = "☰";
+    }
+
+});
+
+        // BLOCK ACCESS WITHOUT LOGIN
+        // GET CURRENT USER
+let currentUser =
+localStorage.getItem("currentUser");
+
+
+// SHOW USERNAME
+document.getElementById(
+    "welcome-user"
+).innerHTML =
+"Welcome, " + currentUser;
+
+        if(loggedIn !== "true"){
+
+            window.location.href =
+            "login.html";
+        }
+
+
+        // LOGOUT FUNCTION
+        function logout(){
+
+            localStorage.removeItem(
+                "loggedIn"
+            );
+
+            window.location.href =
+            "login.html";
+        }
+
+    </script>
+
+</body>
+</html>
